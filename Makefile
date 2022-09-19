@@ -7,12 +7,15 @@ output=myobject.so myfeature.so
 
 .PHONY: build test
 
-build: myobject.so myfeature.so
+build: myobject.so myfeature.so dataobj.so
 
 myobject.so: object/*.cpp
 	$(CC) $< -g -llua -fPIC -shared -o $@
 
 myfeature.so: feature/*.cpp
+	$(CC) $< -g -llua -fPIC -shared -o $@
+
+dataobj.so: data_obj/*.cpp
 	$(CC) $< -g -llua -fPIC -shared -o $@
 
 test: build

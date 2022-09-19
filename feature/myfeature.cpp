@@ -2,13 +2,13 @@
 
 int do_thing(lua_State *L)
 {
-    //MyObject object(3); 
-    MyObject* object;
-    object = new MyObject(300);
-    *reinterpret_cast<MyObject**>(lua_newuserdata(L, sizeof(MyObject*))) = object;
-	luaL_setmetatable(L, LUA_MYOBJECT);
+    
+    MyObject* object; // Declare pointer
+    object = new MyObject(300); // Initialize pointer
+    *reinterpret_cast<MyObject**>(lua_newuserdata(L, sizeof(MyObject*))) = object; // Make Lua aware of it
+	luaL_setmetatable(L, LUA_MYOBJECT); // Metatable magic
 
-    object->set(3000);
+    object->set(3000); // Mess with it
 
     std::cout << "Chom!\n";
     return 1;
