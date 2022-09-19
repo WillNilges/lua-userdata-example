@@ -16,3 +16,12 @@ class MyObject{
 // MyObject identifier for the Lua metatable
 #define LUA_MYOBJECT "MyObject"
  
+static int myobject_new(lua_State* L);
+ 
+// Free MyObject instance by Lua garbage collection
+static int myobject_delete(lua_State* L);
+ 
+// MyObject member functions in Lua
+static int myobject_set(lua_State* L);
+
+static int myobject_get(lua_State* L);

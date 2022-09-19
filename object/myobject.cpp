@@ -1,6 +1,7 @@
 #include "myobject.h"
 // Create & return MyObject instance to Lua
-static int myobject_new(lua_State* L){
+static int myobject_new(lua_State* L)
+{
 	double x = luaL_checknumber(L, 1);
 	*reinterpret_cast<MyObject**>(lua_newuserdata(L, sizeof(MyObject*))) = new MyObject(x);
 	luaL_setmetatable(L, LUA_MYOBJECT);
@@ -8,17 +9,20 @@ static int myobject_new(lua_State* L){
 }
  
 // Free MyObject instance by Lua garbage collection
-static int myobject_delete(lua_State* L){
+static int myobject_delete(lua_State* L)
+{
 	delete *reinterpret_cast<MyObject**>(lua_touserdata(L, 1));
 	return 0;
 }
  
 // MyObject member functions in Lua
-static int myobject_set(lua_State* L){
+static int myobject_set(lua_State* L)
+{
 	(*reinterpret_cast<MyObject**>(luaL_checkudata(L, 1, LUA_MYOBJECT)))->set(luaL_checknumber(L, 2));
 	return 0;
 }
-static int myobject_get(lua_State* L){
+static int myobject_get(lua_State* L)
+{
 	lua_pushnumber(L, (*reinterpret_cast<MyObject**>(luaL_checkudata(L, 1, LUA_MYOBJECT)))->get());
 	return 1;
 }
