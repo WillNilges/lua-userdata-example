@@ -14,10 +14,16 @@ int do_thing(lua_State *L)
     return 1;
 }
 
+int do_data_thing(lua_State *L)
+{
+    return 1;
+}
+
 extern "C" {
     //library to be registered
     static const struct luaL_Reg myfeature [] = {
           {"do_thing", do_thing},
+          {"do_data_thing", do_data_thing},
           {NULL, NULL}  /* sentinel */
     };
 

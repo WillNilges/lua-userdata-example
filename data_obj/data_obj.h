@@ -4,7 +4,8 @@
 #include <iostream>
  
 // DataObj as C++ class
-class DataObj{
+class DataObj
+{
 	private:
 		int* Points;
         int length;
@@ -14,13 +15,12 @@ class DataObj{
             Points = (int*) malloc(sizeof(int) * req_length);
             length = req_length;
         }
-		//DataObj(int x) : x(x){} // todo: delet
-		void set(int x, int pos){this->Points[pos] = x;}
+		void set(int pos, int x){this->Points[pos] = x;}
 		double get(int pos) const{return this->Points[pos];}
 };
  
 // DataObj identifier for the Lua metatable
-#define LUA_MYOBJECT "DataObj"
+#define LUA_DATAOBJ "DataObj"
  
 static int dataobj_new(lua_State* L);
  

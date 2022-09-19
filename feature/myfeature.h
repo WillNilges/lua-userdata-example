@@ -7,3 +7,4 @@
 #include "../data_obj/data_obj.h"
 
 int do_thing(lua_State *L);
+int do_data_thing(lua_State *L);

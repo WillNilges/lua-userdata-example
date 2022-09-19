@@ -3,11 +3,11 @@ CC=g++
 # Warnings
 LUA_VERSION=5.4
 
-output=myobject.so myfeature.so
+output=myobject.so myfeature.so dataobj.so
 
 .PHONY: build test
 
-build: myobject.so myfeature.so dataobj.so
+build: $(output) 
 
 myobject.so: object/*.cpp
 	$(CC) $< -g -llua -fPIC -shared -o $@
