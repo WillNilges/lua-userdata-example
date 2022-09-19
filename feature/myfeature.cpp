@@ -2,7 +2,14 @@
 
 int do_thing(lua_State *L)
 {
-    MyObject object(3); 
+    //MyObject object(3); 
+    MyObject* object;
+    object = new MyObject(300);
+    *reinterpret_cast<MyObject**>(lua_newuserdata(L, sizeof(MyObject*))) = object;
+	luaL_setmetatable(L, LUA_MYOBJECT);
+
+    object->set(3000);
+
     std::cout << "Chom!\n";
     return 1;
 }

@@ -7,4 +7,6 @@ print(obj:get())    -- 42
 obj:set(-1.5)
 print(obj:get())    -- -1.5
 
-myfeature.do_thing()
+object = myfeature.do_thing()
+
+print(object:get()) -- busted
